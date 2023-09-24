@@ -1,6 +1,5 @@
 <?php
-
-class user_model extends CI_Model
+class User_model extends CI_Model
 {
 	/**
 	 * @return array|array[]|object|object[]

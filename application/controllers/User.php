@@ -1,28 +1,31 @@
 <?php
-class User extends CI_Controller {
+
+require_once 'application/interfaces/user_interface.php';
+
+class User extends CI_Controller implements user_interface {
 
 	public function index(): void
 	{
-		$data['users'] = $this->user_model->get_users();
+		$data['users'] = $this->User_model->get_users();
 		$this->load->view('user/index',$data);
 	}
 
 	public function user($user): void
 	{
-		$data['user'] = $this->user_model->get_user($user);
+		$data['user'] = $this->User_model->get_user($user);
 		$this->load->view('user/user',$data);
 	}
 
-	public function create()
+	public function create(): void
 	{
 		$request = $_POST;
-		$this->user_model->insert_user($request);
+		$this->User_model->insert_user($request);
 		redirect('/user/index');
 	}
 
-	public function delete($id)
+	public function delete($id): void
 	{
-		$this->user_model->delete_user($id);
+		$this->User_model->delete_user($id);
 		redirect('/user/index');
 	}
 }
