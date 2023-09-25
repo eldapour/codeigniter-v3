@@ -66,19 +66,22 @@
 <h1 style="color: green;">
 	User Data Management
 </h1>
-<form id="formContainer" method="post" action="create">
+<form id="formContainer" method="post" action="<?php echo base_url('user/update') ?>">
+	<input type="hidden" name="id" value="<?php echo $user->id ?>">
 	<label for="nameInput">
 		Name:
 	</label>
 	<input type="text"
 		   id="nameInput"
 		   name="name"
+		   value="<?php echo $user->name ?>"
 		   placeholder="Enter your name">
 	<label for="emailInput">
 		Email I'd:
 	</label>
 	<input type="email"
 		   id="emailInput"
+		   value="<?php echo $user->email ?>"
 		   name="email"
 		   placeholder="Enter your email">
 	<label for="numberInput">
@@ -87,15 +90,16 @@
 	<input type="text"
 		   id="numberInput"
 		   name="phone"
+		   value="<?php echo $user->phone ?>"
 		   placeholder="Enter your mobile details">
 	<label for="addressInput">
 		Address:
 	</label>
 	<textarea id="addressInput"
 			  name="address"
-			  placeholder="Enter your address"></textarea>
+			  placeholder="Enter your address"><?php echo $user->address ?></textarea>
 	<button type="submit">
-		Add
+		Edit
 	</button>
 </form>
 <table id="outputTable">
@@ -115,9 +119,7 @@
 			<td><?php echo $user->phone ?></td>
 			<td><?php echo $user->address ?></td>
 			<td>
-				<form action="edit/<?php echo $user->id ?>">
-					<button type="submit">Edit</button>
-				</form>
+				<button>Edit</button>
 				<form action="delete/<?php echo $user->id ?>">
 					<button type="submit">Delete</button>
 				</form>
